@@ -15,15 +15,9 @@
 <%= render 'form' %>
 
 <hr/>
+
+
 <!-- listing out the available courses that you can start a discussion on -->
-<p> Please select from the following courses: </p>
-<ul>
-<% @courses.each do |course| %>
-  <li><a href="courses/<%= course.id %>"><%= course.name%></a></li>
-<% end %>
-</ul>
-
-
 
 <!-- list of all discussions -->
 <hr/>
@@ -32,7 +26,7 @@
   <tr>
     <th>Topic</th>
     <th>Comment</th>
-    <th>Course ID</th>
+    <th>Course</th>
     <th></th>
     <th></th>
   </tr>
@@ -42,7 +36,7 @@
   <tr>
     <td><%= discussion.topic %></td>
     <td><%= discussion.comment %></td>
-    <td><%= discussion.course_id %></td>
+    <td><%= discussion.course.name%></td>
     <td><%= link_to 'Show', discussion %></td>
     <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
     <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>

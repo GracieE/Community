@@ -49,6 +49,9 @@ class DiscussionsController < ApplicationController
   # POST /discussions.json
   def create
     @discussion = Discussion.new(params[:discussion])
+   #Could have done it this way which makes a little more sense to me
+   # @discussion.course_id = params[:course_id]
+    #binding.pry
 
     respond_to do |format|
       if @discussion.save
