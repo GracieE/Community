@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1> This is a <u> 
+	<% if @course != nil %>
+		<%=@course.name%>
+	<%else%>
+		Missing Course Name
+	<%end%>
+	</u> course </h1>
+
+<p>
+  <b>Topic:</b>
+  <%= @discussion.topic %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @discussion.comment %>
+</p>
+<%= render 'comment' %>
+
+<%= link_to 'Edit', edit_discussion_path(@discussion) %> |
+<%= link_to 'Back', discussions_path %> | 
+<%= link_to 'Comment on This', discussion_path %>

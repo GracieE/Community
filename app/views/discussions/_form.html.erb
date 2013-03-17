@@ -1,0 +1,32 @@
+<%= form_for @discussion do |f| %>
+  <% if @discussion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
+
+      <ul>
+      <% @discussion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :topic %>
+    <%= f.text_field :topic %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :course %>
+    <%= radio_button_tag(:course, "course") %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Post A New Discussion"%>
+  </div>
+<% end %>
+
+

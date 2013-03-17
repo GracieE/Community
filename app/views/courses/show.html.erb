@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h2>Course Details for <%=@course.name %></h2>
+<p>
+  <b>Name:</b>
+  <%= @course.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @course.location %>
+</p>
+
+<p>
+  <b>Instructor:</b>
+  <%= @course.instructor %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
+
+
+
+<hr/>
+<h2>Discussions for <%=@course.name %></h2>
+
+<table>
+<% @discussions.each do |discussion| %>
+<!-- only print the discussions that have a matching course id -->
+<% if discussion.course_id ==  @course.id %>
+<tr>
+	<td><%=discussion.topic %></td>
+	<td><%=discussion.comment %></td>
+</tr>
+<%end%>
+<%end%>
+</table>
