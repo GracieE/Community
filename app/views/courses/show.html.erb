@@ -15,22 +15,64 @@
   <%= @course.instructor %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'View All Courses', courses_path %>
 
 
 
 <hr/>
-<h2>Discussions for <%=@course.name %></h2>
 
-<table>
-<% @discussions.each do |discussion| %>
-<!-- only print the discussions that have a matching course id -->
-<% if discussion.course_id ==  @course.id %>
-<tr>
-	<td><%=discussion.topic %></td>
-	<td><%=discussion.comment %></td>
-</tr>
-<%end%>
-<%end%>
+<!-- display all the discussions for the particular course -->
+<h2>Discussions for <%=@course.name %></h2>
+<!-- Only if user is logged in -->
+<%if user_signed_in? %>
+  	<table>
+	<% @discussions.each do |discussion| %>
+		<!-- only print the discussions that have a matching course id -->
+		<% if discussion.course_id ==  @course.id %>
+			<tr>
+				<td><strong><%=discussion.topic %></strong><br/></td>
+			</tr>
+			<tr>
+				<td >
+					<em><%=current_user.email%> says:</em><br />
+					<%=discussion.comment %> <br/>
+				
+				<%= link_to 'Add to this Discussion', discussion %></br></br>
+				</td>
+			</tr>
+		<%end%>
+	<%end%>
 </table>
+<!-- if user is not logged in -->
+<% else %>
+	<p> You need to Sign In to contribute or view discussions! </p>
+<% end %>
+
+
+
+
+<hr/>
+
+<!-- Show ability to join only if the user is signed in -->
+<%if user_signed_in? %>
+	<% @courses = current_user.courses %>
+	</br>
+	<!-- for each course, check if the name matches the name of the course they are trying to join-->
+	
+	<!-- count the number of times the current course exists in the users.courses -->
+	<% @counter = 0 %>
+	<% @courses.each do |c| %>
+		<% if c.name == @course.name %>
+			<% @counter = @counter + 1 %>
+		<% end %>
+	<%end%>
+	<!-- this means the course was found in the list of courses for the user -->
+	<% if @counter != 1 %> 
+			<h2>Join <%=@course.name %>!</h2>
+			<%= link_to 'Join', edit_course_path %>
+	<%end%>	
+
+<%end%>
+<!-- make this so that when you click on the button, it adds the course to the user -->
+<!-- it will first go to the join page, then u click a button on form and it adds it to user, as referenced in controller under join. -->
+

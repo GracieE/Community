@@ -5,6 +5,9 @@
   <tr>
   	<td><%= user.id %></td>
     <td><%= user.email %></td>
+    <% user.courses.each do |course| %>
+    <td><%= course.name %>, </td> 
+    <% end %>
   </tr>
 <% end %>
 </table>

@@ -1,27 +1,27 @@
-<h1>Listing courses</h1>
+<h1 align = "center">Join a Course or Create a New One</h1>
 
-<table>
+<table align = "center" cellpadding="8" width="100%">
   <tr>
-    <th>Name</th>
-    <th>Location</th>
-    <th>Instructor</th>
+    <th align = "left">Name</th>
+    <th align = "left">Location</th>
+    <th align = "left">Instructor</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @courses.each do |course| %>
-  <tr>
-    <td><%= course.name %></td>
+   <tr class="<%= cycle('oddrow', 'evenrow') %>">
+    <td><strong><%= course.name %><strong></td>
     <td><%= course.location %></td>
     <td><%= course.instructor %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'See Course Details', course %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Course', new_course_path %>
+<%= link_to 'Add a New Course', new_course_path %>
+<br />
+<%= link_to 'Go Back Home', root_path %>

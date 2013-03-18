@@ -9,6 +9,8 @@ respond_to :html, :xml, :json
 	
 	def show
 	    @user = User.find(params[:id])
+      @courses = Course.all
+      
 	    respond_with(@user)
   	end
 

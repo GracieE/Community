@@ -7,6 +7,7 @@ Community::Application.routes.draw do
   get "users/:id/edit" => "users#edit", :as => :edit_users
   put "users/:id" => "users#update"
 
+  get 'courses/:id/join' => "courses#join", :as => :course_join
 
   resources :courses
 

@@ -1,5 +1,17 @@
 
- <h1> Hello <%= @user.email %> ! </h1>
+<h1> Hello <%= @user.email %> ! </h1>
+
+
+<h3> My Courses </h3>
+<% @user_courses = @user.courses %>
+	<% @user_courses.each do |course| %>
+		<p><%= link_to course.name, course %></p>
+	<%end%>
+
+	
+
+<h3> My Discussions </h3>
+
 
 <%= link_to 'Edit Profile?', edit_users_path(@user) %>
 

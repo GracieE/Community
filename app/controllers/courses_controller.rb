@@ -58,10 +58,12 @@ class CoursesController < ApplicationController
   # PUT /courses/1.json
   def update
     @course = Course.find(params[:id])
+    #if signed in, add the current user to the course. :)
+    @course.users << current_user
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.html { redirect_to @course, notice: 'Successfully Joined Course!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,5 +82,10 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url }
       format.json { head :no_content }
     end
+  end
+
+  #POST when a user joins a course, save it and re_direct to user/:id (user profile page)
+  def join
+      
   end
 end

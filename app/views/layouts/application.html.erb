@@ -5,7 +5,11 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <style type="text/css">
+  </style>
 </head>
+
+
 <body>
 <div id= "container">
 	<div id="user_nav">
@@ -15,6 +19,9 @@
 	  <% else %>
 	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
 	  <% end %>
+	</div>
+	<div id="user_profile">
+		<%= link_to "My Profile", user_path(current_user) %>
 	</div>
 </div>
 <%= yield %>

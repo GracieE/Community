@@ -1,16 +1,8 @@
-<h1>Discussion Board for A Partcular Course</h1>
+<h1>Discussion Board</h1>
 
 
-<h4>Post a new discussion to the x Group here:</h4>
+<h4>Post a new discussion here:</h4>
 
-
-<!-- <%- if user_signed_in? %>
-  <%= form_for [Discussion.new] do |f| %>
-  Content: <%= f.text_field :comment %>
-    <%= f.submit %>
-  <% end %>
-<% end %>
--->
 
 <%= render 'form' %>
 
@@ -20,20 +12,19 @@
 <!-- listing out the available courses that you can start a discussion on -->
 
 <!-- list of all discussions -->
-<hr/>
 
-<table>
+<table cellpadding="8" width="100%">
   <tr>
-    <th>Topic</th>
-    <th>Comment</th>
-    <th>Course</th>
+    <th align = "left">Topic</th>
+    <th align = "left">Comment</th>
+    <th align = "left">Course</th>
     <th></th>
     <th></th>
   </tr>
 
 
 <% @discussions.each do |discussion| %>
-  <tr>
+  <tr class="<%= cycle('oddrow', 'evenrow') %>">
     <td><%= discussion.topic %></td>
     <td><%= discussion.comment %></td>
     <td><%= discussion.course.name%></td>
