@@ -5,9 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :name
 
   has_many :discussions
+
+  has_many :comments
 
   # a user can be associated with many groups, User.courses
   has_and_belongs_to_many :courses

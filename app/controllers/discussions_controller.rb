@@ -23,6 +23,8 @@ class DiscussionsController < ApplicationController
     end
     @courses = Course.all
 
+    @users = User.all
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @discussion }
@@ -33,6 +35,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new.json
   def new
     @discussion = Discussion.new
+    @courses = Course.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +46,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1/edit
   def edit
     @discussion = Discussion.find(params[:id])
+    @courses = Course.all
   end
 
   # POST /discussions
@@ -52,6 +56,7 @@ class DiscussionsController < ApplicationController
    #Could have done it this way which makes a little more sense to me
    # @discussion.course_id = params[:course_id]
     #binding.pry
+
 
     respond_to do |format|
       if @discussion.save

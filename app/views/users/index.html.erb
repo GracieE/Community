@@ -1,10 +1,12 @@
 <h1>List of All Users</h1>
 
-<table>
+<table width = "100%">
 <% @users.each do |user| %>
-  <tr>
+   <tr class="<%= cycle('oddrow', 'evenrow') %>">
   	<td><%= user.id %></td>
+  	<td><%= user.name %></td>
     <td><%= user.email %></td>
+    <td><%= user.location %></td>
     <% user.courses.each do |course| %>
     <td><%= course.name %>, </td> 
     <% end %>

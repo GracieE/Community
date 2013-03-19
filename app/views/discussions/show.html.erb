@@ -1,24 +1,58 @@
 <p id="notice"><%= notice %></p>
 
-<h1> This is a <u> 
-	<% if @course != nil %>
-		<%=@course.name%>
-	<%else%>
-		Missing Course Name
-	<%end%>
-	</u> course </h1>
+<h1 align = "center">
+	<u> 
+		<% if @course != nil %>
+			<%=@course.name%>
+		<%else%>
+			Missing Course Name
+		<%end%>
+	</u> 
+ <br/>Discussion Board
+</h1>
+
 
 <p>
   <b>Topic:</b>
   <%= @discussion.topic %>
 </p>
 
+
+
+<h5>Comments</h5>
+
 <p>
-  <b>Comment:</b>
   <%= @discussion.comment %>
 </p>
-<%= render 'comment' %>
+
+<% @discussion.comments.each do |comment| %>
+	<p><!-- say which user commented -->
+	<%=  comment.name %> 
+    <em>  says: </em>
+    <%= comment.body %>
+  </p>
+  <p>
+  <%= link_to 'Destroy Comment', [comment.discussion, comment],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+</p>
+<% end %>
+
+</br>
+<%= form_for([@discussion, @discussion.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label "Add comment on this Topic"%>
+    <%= f.text_area :body %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :name, :value => current_user.name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ 
+
 
 <%= link_to 'Edit', edit_discussion_path(@discussion) %> |
 <%= link_to 'Back', discussions_path %> | 
-<%= link_to 'Comment on This', discussion_path %>

@@ -17,50 +17,7 @@
 
 
 
-    /* CUSTOMIZE THE NAVBAR
-    -------------------------------------------------- */
-
-    /* Special class on .container surrounding .navbar, used for positioning it into place. */
-    .navbar-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      margin-top: 20px;
-      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
-    }
-    .navbar-wrapper .navbar {
-
-    }
-
-    /* Remove border and change up box shadow for more contrast */
-    .navbar .navbar-inner {
-      border: 0;
-      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-              box-shadow: 0 2px 10px rgba(0,0,0,.25);
-    }
-
-    /* Downsize the brand/project name a bit */
-    .navbar .brand {
-      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
-      font-size: 16px;
-      font-weight: bold;
-      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
-    }
-
-    /* Navbar links: increase padding for taller navbar */
-    .navbar .nav > li > a {
-      padding: 15px 20px;
-    }
-
-    /* Offset the responsive button for proper vertical alignment */
-    .navbar .btn-navbar {
-      margin-top: 10px;
-    }
-
-
+ 
 
     /* CUSTOMIZE THE CAROUSEL
     -------------------------------------------------- */
@@ -97,9 +54,9 @@
     }
 
     .carousel-caption {
-      background-color: transparent;
+      background: rgba(0, 0, 0, 0.5);
       position: static;
-      max-width: 550px;
+      max-width: 450px;
       padding: 0 20px;
       margin-top: 200px;
     }
@@ -112,7 +69,6 @@
     }
     .carousel-caption .btn{
       margin-top: 10px;
-
     }
 
 
@@ -250,46 +206,7 @@
 </head>
 <body>
 
-  <!-- NAVBAR
-    ================================================== -->
-     <div class="navbar wrapper">
-      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-      <div class="container">
-        <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">GA Community</a>
-            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li class="nav-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div><!-- /.navbar-inner -->
-        </div><!-- /.navbar -->
-
-      </div> <!-- /.container -->
-</div>
+  
 
 
  <!-- Carousel
@@ -301,9 +218,11 @@
         	<%= image_tag "students_whiteboard.jpg" %>
           <div class="container">
             <div class="carousel-caption">
+              <div class ="carousel-title">
               <h1>Welcome to the General Assembly Instructor Community</h1>
               <p class="lead">Find out what GA has to offer in the Community</p>
-              <a class="btn btn-large btn-primary" href="/discussions">Browse the Community</a>
+              <a class="btn btn-large btn-danger" href="/discussions">Browse the Community</a>
+               </div>
             </div>
           </div>
         </div>
@@ -313,7 +232,7 @@
             <div class="carousel-caption">
               <h1>Connect with Other Insturctors</h1>
               <p class="lead">Connect with other instructors by joining a GA Group</p>
-              <a class="btn btn-large btn-primary" href="#">Join a GA Group!</a>
+              <a class="btn btn-large btn-danger" href="#">Join a GA Group!</a>
             </div>
           </div>
         </div>
@@ -323,7 +242,7 @@
             <div class="carousel-caption">
               <h1>Chat about a Topic</h1>
               <p class="lead">Have something you want to discuss? Talk about it here</p>
-              <a class="btn btn-large btn-primary" href="#">Start Talking</a>
+              <a class="btn btn-large btn-danger" href="#">Start Talking</a>
             </div>
           </div>
         </div>
@@ -333,7 +252,7 @@
             <div class="carousel-caption">
               <h1>Exchange Resources</h1>
               <p class="lead">Have a good resource? Post it here!</p>
-              <a class="btn btn-large btn-primary" href="#">Post Resource</a>
+              <a class="btn btn-large btn-danger" href="#">Post Resource</a>
             </div>
           </div>
         </div>
@@ -357,19 +276,19 @@
           <img class="img-circle" data-src="holder.js/140x140">
           <h2>Join a Group</h2>
           <p>Connect with other GA instructors teaching the same course or connect on other topics of interest.</p>
-          <p><a class="btn" href="/courses">Join a GA Group &raquo;</a></p>
+          <p><a class="btn btn-danger" href="/courses">Join a GA Group &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
           <h2>Start Talking</h2>
           <p>Start a discussion with other instructors that are teaching the same course or are in a different market and are in the same group </p>
-          <p><a class="btn" href="/discussions">Dicussions By Course &raquo;</a></p>
+          <p><a class="btn btn-danger" href="/discussions">Dicussions By Course &raquo;</a></p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img class="img-circle" data-src="holder.js/140x140">
           <h2>Exchange Stuff</h2>
           <p>Have some good resources that you use with your students? Share them here with others!</p>
-          <p><a class="btn" href="#">Exchange Resources &raquo;</a></p>
+          <p><a class="btn btn-danger" href="#">Exchange Resources &raquo;</a></p>
         </div><!-- /.span4 -->
       </div><!-- /.row -->
 
