@@ -3,10 +3,13 @@
 
 <h4>Post a new discussion here:</h4>
 
-
-<%= render 'form' %>
-
-<hr/>
+<!-- only display if user is signed in -->
+<% if user_signed_in? %>
+  <%= render 'form' %>
+  <hr/>
+<%else%>
+  <p>***You must be signed in to post a new discussion topic***</p>
+<%end%>
 
 
 <!-- listing out the available courses that you can start a discussion on -->
@@ -29,12 +32,13 @@
     <td><%= discussion.comment %></td>
     <td><%= discussion.course.name%></td>
     <td><%= link_to 'Show', discussion %></td>
-    <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-    <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if user_signed_in? %>
+      <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
+      <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%end%>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Discussion', new_discussion_path %>

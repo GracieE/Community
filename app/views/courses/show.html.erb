@@ -45,7 +45,7 @@
 </table>
 <!-- if user is not logged in -->
 <% else %>
-	<p> You need to Sign In to contribute or view discussions! </p>
+	<p> ***You must sign in to contribute or view discussions*** </p>
 <% end %>
 
 
@@ -53,8 +53,12 @@
 
 <hr/>
 
+<!-- Just show title to non-logged in user -->
+<%if user_signed_in? == false %>
+<h2>Join <%=@course.name %>!</h2>
+<p>***You must sign in to join a course***</p>
 <!-- Show ability to join only if the user is signed in -->
-<%if user_signed_in? %>
+<%else%>
 	<% @courses = current_user.courses %>
 	</br>
 	<!-- for each course, check if the name matches the name of the course they are trying to join-->

@@ -22,8 +22,12 @@
   
   <div class="field">
     <%= f.label "Course Selection (choose one): " %>  
-    <!-- output all course options -->
-    <%= f.select("course_id", options_from_collection_for_select(@courses, "id", "name")) %>
+    <!-- output all course options for the user based on what they joined -->
+    <%= f.select("course_id", options_from_collection_for_select(current_user.courses, "id", "name")) %>
+    <!-- check if the user is not part of any courses. -->
+    <%if current_user.courses.count == 0 %>    
+      <p>Join a Course for Some Option to Appear in the Dropdown</p>
+    <%end%>
   </div>
 
   <div class="actions">
